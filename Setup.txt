@@ -1,3 +1,7 @@
 ./gradlew test jacocoTestCoverageVerification
 
 ./gradlew test jacocoTestReport
+
+git checkout -b feature
+
+git push origin feature
