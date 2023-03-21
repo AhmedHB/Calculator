@@ -35,5 +35,17 @@ pipeline{
                 ])
            }
         }
+
+        stage ("Package") {
+            steps {
+                sh "./gradlew build"
+            }
+        }
+
+        stage ("Docker build") {
+            steps {
+                sh "docker build -t ahmedhb81/calculator ."
+            }
+        }
     }
 }
