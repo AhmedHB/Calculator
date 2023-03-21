@@ -50,6 +50,7 @@ pipeline{
 
         stage ("Docker push") {
             steps {
+                sh "docker login -u ahmedhb81"
                 sh "docker push ahmedhb81/calculator"
             }
         }
