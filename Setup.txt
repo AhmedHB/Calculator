@@ -1,3 +1,10 @@
-./gradlew test jacocoTestCoverageVerification
+./gradlew build
 
-./gradlew test jacocoTestReport
+docker build -t calculator .
+
+docker run -p 8080:8080 --name calculator calculator
+
+docker run -p 8080:8080 --name calculator calculator
+
+http://localhost:8080/calculate-sum?a=1&b=2
+
