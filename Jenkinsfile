@@ -50,7 +50,7 @@ pipeline{
 
         stage ("Docker push") {
             steps {
-                withDockerRegistry([ credentialsId: "Docker-Hub-Cred", url: "https://index.docker.io/v1/" ]){
+                withDockerRegistry([ credentialsId: "", url: "https://index.docker.io/v1/" ]){
                     sh "docker push ahmedhb81/calculator"
                 }
             }
