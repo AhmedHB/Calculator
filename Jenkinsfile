@@ -47,5 +47,11 @@ pipeline{
                 sh "docker build -t ahmedhb81/calculator ."
             }
         }
+
+        stage ("Docker push") {
+            steps {
+                sh "docker push ahmedhb81/calculator"
+            }
+        }
     }
 }
