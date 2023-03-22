@@ -11,5 +11,11 @@ http://localhost:8080/calculate-sum?a=1&b=2
 see branches
 git branch -a
 
+behöver skapa credential i jenkins för att kommandot ovan ska fungera
 git push origin Chapter5MorePipelineDocker
+
+
+./gradlew build
+docker build -t ahmedhb81/calculator .
+docker run -d --rm  -p  8765:8080 --name calculator ahmedhb81/calculator
 

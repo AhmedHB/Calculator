@@ -55,5 +55,23 @@ pipeline{
                 }
             }
         }
+
+        stage ("Deploy to staging") {
+            steps {
+                sh "docker run -d --rm  -p  8765:8080 --name calculator ahmedhb81/calculator"
+            }
+        }
+
+        stage ("Acceptance test") {
+            steps {
+                sh "chmod +x Acceptance_test.bash && ./Acceptance_test.bash"
+            }
+        }
+
+        post {
+            always {
+                sh "docker stop calculator"
+            }
+        }
     }
 }
