@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 : ${HOST=127.0.0.1}
-: ${PORT=8765}
+: ${PORT=8080}
 
 function assertCurl() {
 
@@ -76,7 +76,7 @@ echo "Start Tests:" `date`
 echo "HOST=${HOST}"
 echo "PORT=${PORT}"
 
-waitForService "curl http://$HOST:$PORT/calculate-sum?a=3\&b=2"
+waitForService curl http://$HOST:$PORT/calculate-sum?a=3\&b=2
 
 assertCurl 200 "curl http://$HOST:$PORT/calculate-sum?a=3\&b=2 -s"
 assertEqual 5 $(echo $RESPONSE)
