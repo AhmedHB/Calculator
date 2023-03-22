@@ -18,9 +18,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation("io.cucumber:cucumber-java:7.2.0")
+	testImplementation("io.cucumber:cucumber-junit:7.2.0")
+}
+
+tasks.register('acceptanceTest', Test) {
+	include '**/acceptance/**'
+	systemProperties System.getProperties()
 }
 
 tasks.named('test') {
+	exclude '**/acceptance/**'
 	useJUnitPlatform()
 }
 
