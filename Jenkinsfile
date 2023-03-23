@@ -62,10 +62,15 @@ pipeline{
             }
         }
 
-        stage ("Acceptance test") {
+        stage ("Acceptance test v1") {
             steps {
-                //sh "chmod +x Acceptance_test.bash && ./Acceptance_test.bash"
-                sleep 60
+                sh "chmod +x acceptance_test.bash && ./acceptance_test.bash"
+            }
+        }
+
+        stage ("Acceptance test v2") {
+            steps {
+                sh "chmod +x wait_script.bash && ./wait_script.bash"
                 sh "./gradlew acceptanceTest -Dcalculator.url=http://10.0.0.3:8080"
             }
         }
