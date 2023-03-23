@@ -38,7 +38,7 @@ echo "Start wait:" `date`
 echo "HOST=${HOST}"
 echo "PORT=${PORT}"
 
-waitForService curl "http://$HOST:$PORT/calculate-sum?a=3\&b=2"
+waitForService curl http://$HOST:$PORT/calculate-sum?a=3\&b=2
 
 echo "End wait:" `date`
 
