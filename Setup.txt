@@ -17,9 +17,11 @@ git push origin Chapter5MorePipelineDocker
 
 ./gradlew build
 docker build -t ahmedhb81/calculator .
-docker run -d --network=localnetwork --rm -p 8765:8080 --name calculator ahmedhb81/calculator
+docker run -d -p 8765:8080 --network=localnetwork --rm  --name calculator ahmedhb81/calculator
 
-curl "http://10.0.0.3:8765/calculate-sum?a=1&b=2" -s
+curl "http://10.0.0.3:8080/calculate-sum?a=1&b=2" -s
+
+curl "http://localhost:8765/calculate-sum?a=1&b=2" -s
 
 
 apt-get update -y
