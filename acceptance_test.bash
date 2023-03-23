@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-: ${HOST=localhost}
+: ${HOST=10.0.0.3}
 : ${PORT=8765}
 
 function assertCurl() {
