@@ -17,10 +17,16 @@ git push origin Chapter5MorePipelineDocker
 
 ./gradlew build
 docker build -t ahmedhb81/calculator .
-docker run -d --rm -p 8765:8080 --name calculator ahmedhb81/calculator
+docker run -d --network=localnetwork --rm -p 8765:8080 --name calculator ahmedhb81/calculator
 
-curl "http://localhost:8080/calculate-sum?a=1&b=2" -s
+curl "http://10.0.0.3:8765/calculate-sum?a=1&b=2" -s
 
+
+apt-get update -y
+apt-get install -y iputils-ping
+apt-get install net-tools
+
+docker network create --driver=bridge --subnet=10.0.0.0/16 --ip-range=10.0.0.0/24 --gateway=10.0.0.1 localnetwork
 
 
 Köra Jenkins
@@ -32,7 +38,7 @@ docker run -d -p 9000:8080 \
         --name jenkins custom-jenkins-docker
 
 docker run -d -p 9000:8080 \
-        --network="bridge" \
+        --network=localnetwork \
         --privileged \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v $HOME/jenkins_home:/var/jenkins_home \

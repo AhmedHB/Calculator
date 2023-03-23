@@ -58,7 +58,7 @@ pipeline{
 
         stage ("Deploy to staging") {
             steps {
-                sh "docker run --network=bridge -d --rm  -p  8765:8080 --name calculator ahmedhb81/calculator"
+                sh "docker run --network=localnetwork -d --rm  -p  8765:8080 --name calculator ahmedhb81/calculator"
             }
         }
 
@@ -66,7 +66,7 @@ pipeline{
             steps {
                 //sh "chmod +x Acceptance_test.bash && ./Acceptance_test.bash"
                 sleep 60
-                sh "./gradlew acceptanceTest -Dcalculator.url=http://localhost:8765"
+                sh "./gradlew acceptanceTest -Dcalculator.url=http://10.0.0.3:8765"
             }
         }
     }
