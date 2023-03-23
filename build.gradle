@@ -28,8 +28,8 @@ tasks.register('acceptanceTest', Test) {
 }
 
 tasks.named('test') {
-	exclude '**/acceptance/**'
 	useJUnitPlatform()
+	exclude '**/acceptance/**'
 }
 
 jacocoTestCoverageVerification {
