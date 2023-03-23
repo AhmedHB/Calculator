@@ -22,3 +22,21 @@ docker run -d --rm -p 8765:8080 --name calculator ahmedhb81/calculator
 curl "http://localhost:8080/calculate-sum?a=1&b=2" -s
 
 
+
+Köra Jenkins
+
+docker run -d -p 9000:8080 \
+        --privileged \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v $HOME/jenkins_home:/var/jenkins_home \
+        --name jenkins custom-jenkins-docker
+
+docker run -d -p 9000:8080 \
+        --network="bridge" \
+        --privileged \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v $HOME/jenkins_home:/var/jenkins_home \
+        --name jenkins custom-jenkins-docker
+
+
+
